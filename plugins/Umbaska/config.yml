@@ -1,0 +1,80 @@
+Metrics: true # Please keep this enabled <3
+
+entity_uuid_fix: true # Changes the Syntax of the "UUID of Entity" expression to "entity uuid of %entity%" if set to true
+
+skript_variables_location: plugins/Skript/variables.csv # Change this to the appropriate value. Used for Variable Caching, Global Variables etc.
+
+enable_variable_change_event: false # HIGHLY EXPERIMENTAL. ONLY USE ON TESTING SERVERS WITH A LOW AMOUNT OF VARIABLES.
+
+enable_update_checker: true
+
+enable_tag_features: false
+use_bungee: false
+enable_bungee_autocache: false
+bungee_autocache_heartbeat: 20 # How many ticks until Umbaska will automatically update it's cache. Will only be used if use_bungee and enable_bungee_autocache is true.
+debug_info: false
+schematic_location: PLUGINFOLDER/schematics/ #Use PLUGINFOLDER to get Umbaska's folder. Otherwise, put in your own directory.
+
+disable_SkRambled_stuff: false # Set to true if you have SkRambled installed. <3
+
+plotme_warnings_enabled: true # Set to false if you don't want to be warned about PlotMe
+
+enable_vault_hook: true
+
+# This will make Umbaska an economy manager, with the ability to easily handle balances of players using vault.
+# There is a seperate config for this which will be created once this is enabled. It *should* be located in /Umbaska/Econ/config.yml
+
+enable_1.7_override: false
+
+# If set to true, will allow Umbaska to run on 1.7 servers; It will still try to register everything, and it's unknown how it will run.
+# By enabling this option; you accept that the Umbaska Project takes no responsibility for any damages of any sort
+# Enabling this is done at your own risk!
+
+blocked:
+    - FURNACE
+    - CHEST
+    - BEACON
+    - DISPENSER
+    - DROPPER
+    - HOPPER
+    - WORKBENCH
+    - ENCHANTMENT_TABLE
+    - ENDER_CHEST
+    - ANVIL
+    - BED_BLOCK
+    - FENCE_GATE
+    - SPRUCE_FENCE_GATE
+    - BIRCH_FENCE_GATE
+    - ACACIA_FENCE_GATE
+    - JUNGLE_FENCE_GATE
+    - DARK_OAK_FENCE_GATE
+    - IRON_DOOR_BLOCK
+    - WOODEN_DOOR
+    - SPRUCE_DOOR
+    - BIRCH_DOOR
+    - JUNGLE_DOOR
+    - ACACIA_DOOR
+    - DARK_OAK_DOOR
+    - WOOD_BUTTON
+    - STONE_BUTTON
+    - TRAP_DOOR
+    - IRON_TRAPDOOR
+    - DIODE_BLOCK_OFF
+    - DIODE_BLOCK_ON
+    - REDSTONE_COMPARATOR_OFF
+    - REDSTONE_COMPARATOR_ON
+    - FENCE
+    - SPRUCE_FENCE
+    - BIRCH_FENCE
+    - JUNGLE_FENCE
+    - DARK_OAK_FENCE
+    - ACACIA_FENCE
+    - NETHER_FENCE
+    - BREWING_STAND
+    - CAULDRON
+    - SIGN_POST
+    - WALL_SIGN
+    - SIGN
+
+umbaska_version: 2.0 Beta 5.5.1 # Do not change this. It will cause your config to reset!
+admin_url: null

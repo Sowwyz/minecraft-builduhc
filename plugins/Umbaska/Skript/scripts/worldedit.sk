@@ -1,0 +1,57 @@
+command /replace <item> <item>:
+	aliases: //replace
+	trigger:
+		player has permission "worldedit.use"
+		loop blocks within {pos.%player%.1} to {pos.%player%.2}:
+			loop-block is arg 1
+			set loop-block to arg 2
+			add location of loop-block to {undo.%player%::*}
+
+command /set <item>:
+	aliases: //set
+	trigger:
+		player has permission "worldedit.use"
+		loop blocks within {pos.%player%.1} to {pos.%player%.2}:
+			set loop-block to arg 1
+			add location of loop-block to {undo.%player%::*}
+
+command /walls <item>:
+	aliases: //walls
+	trigger:
+		player has permission "worldedit.use"
+		loop blocks within {pos.%player%.1} to {pos.%player%.2}:
+			x coord of loop-block is x coord of {pos.%player%.1}:
+				set loop-block to arg 1
+				add location of loop-block to {undo.%player%::*}
+			z coord of loop-block is z coord of {pos.%player%.1}:
+				set loop-block to arg 1
+				add location of loop-block to {undo.%player%::*}
+			x coord of loop-block is x coord of {pos.%player%.2}:
+				set loop-block to arg 1
+				add location of loop-block to {undo.%player%::*}
+			z coord of loop-block is z coord of {pos.%player%.2}:
+				set loop-block to arg 1
+				add location of loop-block to {undo.%player%::*}
+
+command /undo:
+	aliases: //undo
+	trigger:
+		loop {undo.%player%::*}:
+			set block at loop-value to air
+		delete {undo.%player%::*}
+
+on left click:
+	player has permission "worldedit.use"
+	tool of player is stick
+	clicked block is set
+	cancel event
+	message "&5Position 1 set to %location of clicked block%."
+	set {pos.%player%.1} to location of clicked block
+
+on right click:
+	player has permission "worldedit.use"
+	tool of player is stick
+	clicked block is set
+	cancel event
+	message "&5Position 2 set to %location of clicked block%."
+	set {pos.%player%.2} to location of clicked block

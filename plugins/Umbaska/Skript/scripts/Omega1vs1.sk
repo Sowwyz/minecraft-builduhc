@@ -1,0 +1,759 @@
+
+options:
+	prefix: &6&l1vs1&7
+	
+	Starting_Elo: 500
+	
+	Max_Elo: 2000
+	
+on join:
+	wait 0.1 seconds
+	clear {joinquit::%player%}
+	if {cosas::%player%} is not set:
+		set {cosas::%player%} to true
+		set {1v1player.lobby::%player%} to false
+		set {1v1player.inpvp::%player%} to false
+		set {1v1::kills::%player%} to 0
+		set {1v1::deaths::%player%} to 0
+		set {1v1::playedgames::%player%} to 0
+		set {1v1::wins::%player%} to 0
+		set {1v1::coins::%player%} to 0
+		set {1v1::elo::%player%} to {@Starting_Elo}
+	if {1v1player.inpvp::%player%} or {1v1player.lobby::%player%} is true:
+		make player execute command "/1vs1 leave"
+function signupdate(a: text):
+	set line 1 of block at {1v1.sign-loc::%{_a}%} to "&6&l1vs1"
+	set line 2 of block at {1v1.sign-loc::%{_a}%} to "%{1vs1.status::%{_a}%}%"
+	set line 3 of block at {1v1.sign-loc::%{_a}%} to "%{_a}%"
+	set line 4 of block at {1v1.sign-loc::%{_a}%} to "&8%{1vs1players.arena::%{_a}%}%/2"
+	if {1vs1.status::%{_a}%} is "&aWaiting...":
+		set block 1 behind the block at {1v1.sign-loc::%{_a}%} to stained hardened clay:5
+	if {1vs1.status::%{_a}%} is "&cInPvp":
+		set block 1 behind the block at {1v1.sign-loc::%{_a}%} to stained hardened clay:14
+	if {1vs1.status::%{_a}%} is "&eStarting...":
+		set block 1 behind the block at {1v1.sign-loc::%{_a}%} to stained hardened clay:3
+	if {1vs1.status::%{_a}%} is "&eRebuilding":
+		set block 1 behind the block at {1v1.sign-loc::%{_a}%} to stained hardened clay:4
+function efectos(p: player):
+	remove haste from {_p}
+	remove invisibility from {_p}
+	remove strength from {_p}
+	remove slowness from {_p}
+	remove jump boost from {_p}
+	remove speed from {_p}
+	remove nausea from {_p}
+	remove absorption from {_p}
+	remove poison from {_p}
+function arenaguardar(t: text):
+	set {_x} to 0
+	loop blocks within {1vs1::arena::%{_t}%::pos1} to {1vs1::arena::%{_t}%::pos2}:
+		if loop-block is not air:
+			add 1 to {_x}
+			set {1vs1::arena::%{_t}%::blocklar::%location of loop-block%} to type of block at loop-block
+			if {_x} is 100:
+				wait 1 ticks
+				set {_x} to 0
+function arenaliberar(t: text):
+	set {_x} to 0
+	set {_y} to 0
+	wait 0.3 seconds
+	loop blocks within {1vs1::arena::%{_t}%::pos1} to {1vs1::arena::%{_t}%::pos2}:
+		if {1vs1::arena::%{_t}%::blocklar::%location of loop-block%} is set:
+			if type of loop-block is not {1vs1::arena::%{_t}%::blocklar::%location of loop-block%}:
+				add 1 to {_x}
+				set block at loop-block to {1vs1::arena::%{_t}%::blocklar::%location of loop-block%}
+				if {_x} is 4:
+					wait 40 ticks
+					set {_x} to 0
+		else:
+			if loop-block is not air:
+				set block at loop-block to air
+				if {_y} is 4:
+					wait 40 ticks
+					set {_y} to 0
+	set {1vs1.status::%{_t}%} to "&aWaiting..."
+	signupdate({_t})
+function saveinv(p: player):
+	set {_uuid} to "%uuid of {_p}%"
+	set {_count} to 0
+	loop 36 times:
+		set {inv.%{_uuid}%.%{_count}%.main} to slot {_count} of {_p}'s inventory
+		add 1 to {_count}
+	set {inv.%{_uuid}%.helmet.main} to {_p}'s helmet
+	set {inv.%{_uuid}%.chest.main} to {_p}'s chestplate
+	set {inv.%{_uuid}%.legs.main} to {_p}'s leggings
+	set {inv.%{_uuid}%.feet.main} to {_p}'s boots
+function giveinv(p: player):
+	set {_uuid} to "%uuid of {_p}%"
+	set {_count} to 0
+	loop 36 times:
+		set slot {_count} of {_p}'s inventory to {inv.%{_uuid}%.%{_count}%.main}
+		add 1 to {_count}
+	set the helmet of {_p} to {inv.%{_uuid}%.helmet.main}
+	set the chestplate of {_p} to {inv.%{_uuid}%.chest.main}
+	set the leggings of {_p} to {inv.%{_uuid}%.legs.main}
+	set the boots of {_p} to {inv.%{_uuid}%.feet.main}
+function joinquit(p: player):
+	set {joinquit::%{_p}%} to true
+	wait 3 seconds
+	clear {joinquit::%{_p}%}
+function kitgive(p: player):
+	loop {1vs1players.%{1vs1.a.%{_p}%}%::*}:
+		set {_p} to loop-value
+		set {_pUUID} to "%uuid of {_p}%"
+		wait 0.7 seconds
+		play raw sound "random.pop" at {_p} with pitch 1 volume 0.1
+		give {kit.helm::%{1vs1.a.%{_p}%}%} to helmet of {_p}
+		give {kit.chest::%{1vs1.a.%{_p}%}%} to chestplate of {_p}
+		give {kit.legs::%{1vs1.a.%{_p}%}%} to leggings of {_p}
+		give {kit.boots::%{1vs1.a.%{_p}%}%} to boots of {_p}
+		restore inventory of {_p} from {kit.items::%{1vs1.a.%{_p}%}%}
+
+command /1vs1 [<text>] [<text>] [<text>]:
+	trigger:
+		if arg 1 is "create":
+			if player has permission "1vs1.admin":
+				if arg 2 is set:
+					if {1vs1.arena::%arg 2%} is not set:
+						set {1vs1.arena::%arg 2%} to true
+						set {1vs1.status::%arg 2%} to "&aWaiting..."
+						set {1vs1players.arena::%arg 2%} to 0
+						set {ranked::%arg 2%} to true
+						set {ver::modo::%arg 2%} to "Normal"
+						set {ver::ranked::%arg 2%} to "Ranked"
+						add arg 2 to {1vs1::liste::*}
+						send "{@prefix}&7 Arena created:&6 %arg 2%" #
+					else:
+						send "{@prefix}&c the arena does not exist" #
+				else:
+					send "{@prefix}&c Please put the name of the arena." #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "remove":
+			if player has permission "1vs1.admin":
+				if arg 2 is set:
+					if {1vs1.arena::%arg 2%} is true:
+						clear {1vs1.arena::%arg 2%}
+						clear {1vs1.status.arena::%arg 2%}
+						remove arg 2 from {1vs1::liste::*}
+						remove arg 2 from {1vs1::listeUN::*}
+						clear {1vs1players.arena::%arg 2%}
+						clear {modebuild::%arg 2%}
+						clear {spawnpoint::%arg 2%::*}
+						clear {ver::modo::%arg 2%}
+						clear {ver::ranked::%arg 2%}
+						clear {ranked::%arg 2%}
+						wait 0.2 seconds
+						clear {arena.lobby::%%arg 2}
+						clear {kit.helm::%arg 2%}
+						clear {kit.chest::%arg 2%}
+						clear {kit.legs::%arg 2%}
+						clear {kit.boots::%arg 2%}
+						clear {1vs1::arena::%arg 2%::pos1}
+						clear {1vs1::arena::%arg 2%::pos2}
+						clear {1vs1::arena::%arg 2%::blocklar::*}
+						clear {kit.items::%arg 2%}
+						send "{@prefix}&7 Arena removed:&a %arg 2%" #
+					else:
+						send "{@prefix}&c the arena does not exist" #
+				else:
+					send "{@prefix}&c Please put the name of the arena." #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "wand":
+			if player has permission "omegaskywars.admin":
+				give 1 golden hoe named "&a&l1vs1 Wand. BuildPvp" to player
+				play raw sound "note.pling" at player with pitch 1 volume 0.1
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+				stop
+		else if arg 1 is "setarenabuild":
+			if player has permission "1vs1.admin":
+				if arg 2 is set:
+					if {1vs1.arena::%arg 2%} is true:
+						if {1vs1::pos::%player%::1} is set:
+							if {1vs1::pos::%player%::2} is set:
+								if {modebuild::%arg 2%} is set:
+									set {1vs1::arena::%arg 2%::pos1} to {1vs1::pos::%player%::1}
+									set {1vs1::arena::%arg 2%::pos2} to {1vs1::pos::%player%::2}
+									send "{@prefix}&7 It has been successfully saved. arena &6&l%arg 2%"
+									wait 0.5 seconds
+									arenaguardar(arg-2)
+								else:
+									send "{@prefix}&c You can not do that.&6%arg 2%&c is in normal mode"
+							else:
+								send "{@prefix}&4 you have to select the region"
+						else:
+							send "{@prefix}&4 you have to select the region"
+					else:
+						send "{@prefix}&c the arena does not exist" #
+				else:
+					send "{@prefix}&c Please put the name of the arena." #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "top":
+			if arg 2 is "wins" or "kills" or "elo":
+				set {_1st.point} to 0
+				set {_2nd.point} to 0
+				set {_3rd.point} to 0
+				set {_4th.point} to 0
+				set {_5th.point} to 0
+				loop {1v1::%arg 2%::*}:
+					if loop-value is more than {_1st.point}:
+						set {_5th} to {_4tlmg}
+						set {_5th.point} to {_4th.point}
+						set {_4tlmg} to {_3rd}
+						set {_4th.point} to {_3rd.point}
+						set {_3rd} to {_2nd}
+						set {_3rd.point} to {_2nd.point}
+						set {_2nd} to {_1st}
+						set {_2nd.point} to {_1st.point}
+						set {_1st} to loop-index
+						set {_1st.point} to loop-value
+					else if loop-value is more than {_2nd.point}:
+						set {_5th} to {_4tlmg}
+						set {_5th.point} to {_4th.point}
+						set {_4tlmg} to {_3rd}
+						set {_4th.point} to {_3rd.point}
+						set {_3rd} to {_2nd}
+						set {_3rd.point} to {_2nd.point}
+						set {_2nd} to loop-index
+						set {_2nd.point} to loop-value
+					else if loop-value is more than {_3rd.point}:
+						set {_5th} to {_4tlmg}
+						set {_5th.point} to {_4th.point}
+						set {_4tlmg} to {_3rd}
+						set {_4th.point} to {_3rd.point}
+						set {_3rd} to loop-index
+						set {_3rd.point} to loop-value
+					else if loop-value is more than {_4th.point}:
+						set {_5th} to {_4tlmg}
+						set {_5th.point} to {_4th.point}
+						set {_4tlmg} to loop-index
+						set {_4th.point} to loop-value
+					else if loop-value is more than {_5th.point}:
+						set {_5th} to loop-index
+						set {_5th.point} to loop-value
+				wait 1 ticks
+				open chest with 1 rows named "&8&l1vs1 Top %arg 2%" to player
+				wait 1 ticks
+				play raw sound "random.pop" at player with pitch 1 volume 0.1
+				set slot 0 of player's current inventory to emerald block named "&6&lTOP 1" with lore "&6||&a%{_1st}%||&e%{_1st.point}% %arg 2%||&6"
+				set slot 2 of player's current inventory to diamond block named "&6&lTOP 2" with lore "&6||&a%{_2nd}%||&e%{_2nd.point}% %arg 2%||&6"
+				set slot 4 of player's current inventory to gold block named "&6&lTOP 3" with lore "&6||&a%{_3rd}%||&e%{_3rd.point}% %arg 2%||&6"
+				set slot 6 of player's current inventory to iron block named "&6&lTOP 4" with lore "&6||&a%{_4tlmg}%||&e%{_4th.point}% %arg 2%||&6"
+				set slot 8 of player's current inventory to coal block named "&6&lTOP 5" with lore "&6||&a%{_5th}%||&e%{_5th.point}% %arg 2%||&6"
+			else:
+				send "{@prefix}&c /1vs1 top wins/kills/elo"
+		else if arg 1 is "setmode":
+			if player has permission "1vs1.admin":
+				if arg 2 is set:
+					if {1vs1.arena::%arg 2%} is true:
+						if arg 3 is "Normal":
+							send "{@prefix}&7Now the arena is:&6&l Normal"
+							clear {modebuild::%arg 2%}
+							set {ver::modo::%arg 2%} to "Normal"
+						else if arg 3 is "BuildUhc":
+							send "{@prefix}&7Now the arena is:&6&l BuildUhc"
+							set {modebuild::%arg 2%} to true
+							set {ver::modo::%arg 2%} to "BuildUhc"
+							send "{@prefix}&7 By creating an arena build you have to select the sand"
+							send "{@prefix}&7 Use /1v1 wand and select the sand and then put"
+							send "{@prefix}&7 /1vs1 setarenabuild (arena)"
+						else:
+							send "{@prefix}&c /1vs1 mode (arena) (Normal/BuildUhc)"
+					else:
+						send "{@prefix}&c the arena does not exist" #
+				else:
+					send "{@prefix}&c Please put the name of the arena." #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "ranked":
+			if player has permission "1vs1.admin":
+				if arg 2 is set:
+					if {1vs1.arena::%arg 2%} is true:
+						if arg 3 is "false" or "true":
+							if arg 3 is "true":
+								wait 0.1 seconds
+								set {ranked::%arg 2%} to true
+								set {ver::ranked::%arg 2%} to "Ranked"
+								send "{@prefix}&7Now the arena is:&3&l Ranked" to player
+							if arg 3 is "false":
+								remove arg 2 from {1vs1::liste::*}
+								add arg 2 to {1vs1::listeUN::*}
+								set {ranked::%arg 2%} to false
+								set {ver::ranked::%arg 2%} to "UnRanked"
+								send "{@prefix}&7Now the arena is:&8&l UnRanked" to player
+						else:
+							send "{@prefix}&c /1vs1 ranked (arena) (true/false)"
+					else:
+						send "{@prefix}&c the arena does not exist" #
+				else:
+					send "{@prefix}&c Please put the name of the arena." #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "stats":
+			open chest with 1 rows named "&2&l1vs1 Stats" to player
+			wait 1 ticks
+			play raw sound "random.pop" at player with pitch 1 volume 0.1
+			set slot 2 of player's current inventory to diamond sword named "&2&lKills:&7&l %{1v1::kills::%player%}%"
+			set slot 0 of player's current inventory to Diamond named "&6&lWins:&7&l %{1v1::wins::%player%}%"
+			set slot 6 of player's current inventory to redstone named "&c&lDeaths:&7&l %{1v1::deaths::%player%}%"
+			set slot 4 of player's current inventory to paper named "&e&lPlayed Games:&7&l %{1v1::playedgames::%player%}%"
+			set slot 8 of player's current inventory to gold ingot named "&6&lElo:&7&l &7&l%{1v1::elo::%player%}%"
+		else if arg 1 is "debug":
+			if arg 2 is set:
+				set {1vs1.status::%arg 2%} to "&aWaiting..."
+				set {1vs1players.arena::%arg 2%} to 0
+				clear {1vs1players.%arg 2%::*}
+				send "{@prefix}&3 done" #
+		else if arg 1 is "listRanked":
+			wait 1 ticks
+			play raw sound "note.pling" at player with pitch 1 volume 0.1
+			open chest with 4 rows named "&2&lArenas&3&l Ranked" to player
+			wait 1 tick
+			set {_x} to 0
+			loop {1vs1::liste::*}:
+				set {_icon} to stained hardened clay:5
+				if {1vs1.status::%loop-value%} is "&cInPvp" or "&eStarting...":
+					set {_icon} to stained hardened clay:14
+				if {1vs1.status::%loop-value%} is "&eRebuilding":
+					set {_icon} to stained hardened clay:4
+				set slot {_x} of player's current inventory to {_icon} named "&6&l%loop-value%" with lore "&3&lPlayers: &7&l%{1vs1players.arena::%loop-value%}%/2||||&3&lStatus: %{1vs1.status::%loop-value%}%||||&3&lMode: &7&l%{ver::modo::%loop-value%}%||||&e&l>> Click to join "
+				add 1 to {_x}
+		else if arg 1 is "listUnRanked":
+			wait 1 ticks
+			play raw sound "note.pling" at player with pitch 1 volume 0.1
+			open chest with 4 rows named "&2&lArenas&8&l UnRanked" to player
+			wait 1 tick
+			set {_x} to 0
+			loop {1vs1::listeUN::*}:
+				set {_icon} to stained hardened clay:5
+				if {1vs1.status::%loop-value%} is "&cInPvp" or "&eStarting...":
+					set {_icon} to stained hardened clay:14
+				if {1vs1.status::%loop-value%} is "&eRebuilding":
+					set {_icon} to stained hardened clay:4
+				set slot {_x} of player's current inventory to {_icon} named "&6&l%loop-value%" with lore "&3&lPlayers: &7&l%{1vs1players.arena::%loop-value%}%/2||||&3&lStatus: %{1vs1.status::%loop-value%}%||||&3&lMode: &7&l%{ver::modo::%loop-value%}%||||&e&l>> Click to join "
+				add 1 to {_x}
+		else if arg 1 is "setlobby":
+			if player has permission "1vs1.admin":
+				if arg 2 is set:
+					if {1vs1.arena::%arg 2%} is true:
+						set {arena.lobby::%arg 2%} to location of player
+						send "{@prefix}&7 Lobby os arena &6%arg 2%&7 has been set!" #
+					else:
+						send "{@prefix}&c the arena does not exist" #
+				else:
+					send "{@prefix}&c Please put the name of the arena." #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "setkit":
+			if player has permission "1vs1.admin":
+				if {1vs1.arena::%arg 2%} is true:
+					set {kit.helm::%arg 2%} to helmet of player
+					set {kit.chest::%arg 2%} to chestplate of player
+					set {kit.legs::%arg 2%} to leggings of player
+					set {kit.boots::%arg 2%} to boots of player
+					set {kit.items::%arg 2%} to serialized inventory of player
+					wait 0.5 seconds
+					clear player's inventory
+					play raw sound "random.pop" at player with pitch 1 volume 0.1
+					send "{@prefix} &7You put arena kit: &a%arg 2%" #
+				else:
+					send "{@prefix}&c the arena does not exist" #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "setmainlobby":
+			if player has permission "1vs1.admin":
+				if arg 3 is not set:
+					set {1vs1mainlobby} to location of player
+					send "{@prefix}&7 Main lobby has been set." #
+				else:
+					send "{@prefix}&c unknown command."
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "setspawn":
+			if player has permission "1vs1.admin":
+				if {1vs1.arena::%arg 2%} is true:
+					if arg 3 is "1" or "2":
+						set {spawnpoint::%arg 2%::%arg 3%} to location of player
+						send "{@prefix}&3 Has puesto el &aspawnpoint %arg 3%&3 de la arena &a%arg 2%&3 con exito"
+					else:
+						send "{@prefix}&c You just have to put spawn 1 and 2" #
+				else:
+					send "{@prefix}&c the arena does not exist" #
+			else:
+				send "{@prefix}&c You don't have permission to do this!" #
+		else if arg 1 is "join":
+			if {1v1player.lobby::%player%} and {1v1player.inpvp::%player%} is false:
+				if {1vs1.arena::%arg 2%} is true:
+					if size of {1vs1players.%arg 2%::*} < 2:
+						if {1vs1.status::%arg 2%} is "&aWaiting...":
+							if {joinquit::%player%} is not set:
+								add player to {1vs1players.%arg 2%::*}
+								saveinv(player)
+								joinquit(player)
+								set player's gamemode to survival
+								set {1v1player.lobby::%player%} to true
+								set player's health and hunger to 20
+								add 1 to {1vs1players.arena::%arg 2%}
+								set player's fly mode to false
+								teleport player to {arena.lobby::%arg 2%}
+								clear player's inventory
+								signupdate(arg-2)
+								set {1vs1.a.%player%} to arg 2
+								set slot 8 of player's inventory to redstone named "&4&lLEAVE"
+								set slot 4 of player's inventory to book named "&2&lStats"
+								send "&6&l---------------------------------------------"
+								send ""
+								send "&c&lYou are now in 1vs1"
+								send "&7&lArena: &2&l%arg 2%"
+								send "&7&lMode:&6&l %{ver::modo::%arg 2%}%&7&l -&3&l %{ver::ranked::%arg 2%}%"
+								send "&e&lTo exit you can use /1vs1 leave"
+								send ""
+								send "&6&l---------------------------------------------"
+								if size of {1vs1players.%arg 2%::*} = 2:
+									set {_seg} to 10
+									set {1vs1.status::%arg 2%} to "&eStarting..."
+									signupdate(arg-2)
+									loop 10 times:
+										if (size of {1vs1players.%arg 2%::*}) = 2:
+											send "&e&lThe PvP starts in&c&l %{_seg}%&e&l seconds" to {1vs1players.%arg 2%::*}
+											play raw sound "note.pling" at {1vs1players.%arg 2%::*} with pitch 1 volume 0.1
+											remove 1 from {_seg}
+											wait 1 seconds
+										else:
+											set {1vs1.status::%arg 2%} to "&aWaiting..."
+											signupdate(arg-2)
+											send "{@prefix}&c Not enough players." to {1vs1players.%arg 2%::*}
+											stop
+									if (size of {1vs1players.%arg 2%::*}) = 2:
+										broadcast "{@prefix}&6 %{1vs1players.%arg 2%::*}% They are fighting."
+										set {1vs1.status::%arg 2%} to "&cInPvp"
+										signupdate(arg-2)
+										loop {1vs1players.%arg 2%::*}:
+											clear loop-value's inventory
+											set {1v1player.lobby::%loop-value%} to false
+											set {1v1player.inpvp::%loop-value%} to true
+											add 1 to {1v1::playedgames::%loop-value%}
+										set {_n} to 1
+										loop {1vs1players.%arg 2%::*}:
+											set {_p} to "%loop-value%" parsed as player
+											teleport {_p} to {spawnpoint::%arg 2%::%{_n}%}
+											add 1 to {_n}
+										kitgive({1vs1players.%arg 2%::*})
+										send "&a&LGoo!"
+										stop
+									else:
+										set {1vs1.status::%arg 2%} to "&aWaiting..."
+										signupdate(arg-2)
+										send "{@prefix}&c Not enough players." to {1vs1players.%arg 2%::*}
+										stop
+							else:
+								send "{@prefix}&7 When you left a game, you need to wait for 2 seconds to join another game!"
+						else:
+							if {1vs1.status::%arg 2%} is "&eRebuilding":
+								send "{@prefix}&c The sand is regenerating"
+							else:
+								send "{@prefix}&c The game is in PvP"
+					else:
+						send "{@prefix}&c The arena is full"
+				else:
+					send "{@prefix}&c That arena does not exist."
+			else:
+				send "{@prefix}&c You're inside a game."
+		else if arg 1 is "leave":
+			if {1v1player.lobby::%player%} or {1v1player.inpvp::%player%} is true:
+				if {joinquit::%player%} is not set:
+					remove player from {1vs1players.%{1vs1.a.%player%}%::*}
+					set {1v1player.lobby::%player%} to false
+					set {1v1player.inpvp::%player%} to false
+					clear player's inventory
+					set player's health and hunger to 20
+					joinquit(player)
+					remove 1 from {1vs1players.arena::%{1vs1.a.%player%}%}
+					teleport player to {1vs1mainlobby}
+					giveinv(player)
+					send "{@prefix}&3 You left the game."
+					signupdate({1vs1.a.%player%})
+					efectos(player)
+					if (size of {1vs1players.%{1vs1.a.%player%}%::*}) < 2:
+						if {1vs1.status::%{1vs1.a.%player%}%} is "&cInPvp":
+							send "{@prefix}&4&l %player% came out of the game." to {1vs1players.%{1vs1.a.%player%}%::*}
+							wait 1 seconds
+							loop {1vs1players.%{1vs1.a.%player%}%::*}:
+								set {1v1player.lobby::%loop-value%} to false
+								set {1v1player.inpvp::%loop-value%} to false
+								clear loop-value's inventory
+								efectos(loop-value)
+							teleport {1vs1players.%{1vs1.a.%player%}%::*} to {1vs1mainlobby}
+							giveinv({1vs1players.%{1vs1.a.%player%}%::*})
+							remove {1vs1players.%{1vs1.a.%player%}%::*} from {1vs1players.%{1vs1.a.%player%}%::*}
+							clear {1v1block::%{1vs1.a.%player%}%::*}
+							arenaliberar({1vs1.a.%player%})
+							set {1vs1.status::%{1vs1.a.%player%}%} to "&eRebuilding"
+							set {1vs1players.arena::%{1vs1.a.%player%}%} to 0
+							clear {1vs1players.%{1vs1.a.%player%}%::*}
+							signupdate({1vs1.a.%player%})
+				else:
+					send "{@prefix}&7 When you leave a game, you need to wait for 2 seconds to join the game!"
+			else:
+				send "{@prefix}&c Not at any game."
+		else:
+			send "&2&l-----Command, Players-----"
+			send "&a&l/1vs1 join (arena)"
+			send "&a&l/1vs1 leave"
+			send "&a&l/1vs1 listRanked"
+			send "&a&l/1vs1 listUnRanked"
+			send "&a&l/1vs1 stats"
+			send "&a&l/1vs1 top (elo/kills/wins)"
+			if player has permission "1vs1.admin":
+				send "&6&l-----Command, Admins-----"
+				send "&e&l/1vs1 setmainlobby"
+				send "&e&l/1vs1 create (arena)"
+				send "&e&l/1vs1 setmode (arena) (BuildUhc/Normal)"
+				send "&e&l/1vs1 ranked (arena) (true/false)"
+				send "&e&l/1vs1 setlobby (arena)"
+				send "&e&l/1vs1 setspawn (arena) 1/2"
+				send "&e&l/1vs1 setkit (arena)"
+				send "&e&l/1vs1 remove (arena)"	
+on right click with redstone:
+	if {1v1player.lobby::%player%} is true:
+		player is holding a redstone named "&4&lLEAVE"
+		cancel event
+		make player execute command "/1vs1 leave"	
+on right click with book:
+	if {1v1player.lobby::%player%} is true:
+		player is holding a book named "&2&lStats"
+		cancel event
+		make player execute command "/1vs1 stats"			
+on sign change:
+	if player has permission "1vs1.admin":
+		if line 1 is "[1v1]" or "[1vs1]":
+			if line 2 is "join" or "Join":
+				if {1vs1.arena::%uncolored line 3%} is true:
+					set line 1 to "&6&l1vs1"
+					set line 2 to "%{1vs1.status::%uncolored line 3%}%"
+					set line 3 to "%uncolored line 3%"
+					set line 4 to "&8%{1vs1players.arena::%uncolored line 3%}%/2"
+					set {1v1.sign-loc::%uncolored line 3%} to event-block
+					send "{@prefix} &7Sign successfully placed!" to player
+					signupdate(line 3)
+				else:
+					set line 1 to "&41vs1"
+					set line 2 to "&cError"
+					send "&cThis game does not exist!"	
+			if line 2 is "info":
+				if {1vs1.arena::%uncolored line 3%} is true:
+					set line 1 to ""
+					set line 2 to "&e&lSin datos..."
+					set line 3 to "%line 3%"
+					set line 4 to ""
+					set {info::%line 3%} to event-block
+					send "{@prefix} &7Sign successfully placed!" to player
+on sign change:
+	if player has permission "1vs1.admin":
+		if line 1 is "[1v1]" or "[1vs1]":
+			if line 2 is "arenas" or "a":
+				set line 1 to "&6&l1vs1"
+				set line 2 to "&lArenas"
+				set line 3 to "&lClick para abrir"					
+on break a sign or wall sign:
+	if {1v1.sign-loc::%line 3%} is set:
+		if player is op:
+			delete {1v1.sign-loc::%line 3%}
+			send "{@prefix} &cSign Removed!" to player
+		else:
+			cancel event	
+on rightclick on sign:
+	if line 1 of clicked block is "&6&l1vs1":
+		if line 2 of clicked block is "&lArenas":
+			make player execute command "/1vs1 list"
+on rightclick on sign:
+	if {1v1.sign-loc::%line 3%} is set:
+		if line 1 of clicked block is "&6&l1vs1":
+			make player execute command "/1vs1 join %uncolored line 3%"	
+on death of player:				
+	if {1v1player.inpvp::%victim%} is true:
+		set victim's health and hunger to 20
+		clear drops
+		if {ranked::%{1vs1.a.%victim%}%} is true:
+			if {1v1::elo::%victim%} is not "0":
+				set {_menoselo} to 5 or 10 or 7 or 8 or 9 or 10
+				remove {_menoselo} from {1v1::elo::%victim%}
+				send "{@prefix}&c&l -%{_menoselo}% Elo" to victim
+				if {1v1::elo::%victim%} < 0:
+					set {1v1::elo::%victim%} to 0
+		add 1 to {1v1::kills::%attacker%}
+		add 1 to {1v1::deaths::%victim%}
+		set the death message to ""
+		signupdate({1vs1.a.%victim%})
+		set {1v1player.lobby::%victim%} to false
+		set {1v1player.inpvp::%victim%} to false
+		remove victim from {1vs1players.%{1vs1.a.%victim%}%::*}
+		efectos(victim)
+		teleport player to {1vs1mainlobby}
+		broadcast "{@prefix}&2&l %{1vs1players.%{1vs1.a.%victim%}%::*}%&6&l(&c&l%health of attacker%&4&l❤&6&l)&e&l He has won &a&l%victim%"
+		wait 0.3 seconds
+		giveinv(victim)
+		loop 10 times:
+			launch Ball firework colored green or blue or red at {1vs1players.%{1vs1.a.%victim%}%::*} timed 1.2
+			launch Ball firework colored green or blue or red at {1vs1players.%{1vs1.a.%victim%}%::*} timed 1.2
+			wait 10 ticks
+		loop {1vs1players.%{1vs1.a.%victim%}%::*}:
+			clear loop-value's inventory
+			set {1v1player.lobby::%loop-value%} to false
+			set {1v1player.inpvp::%loop-value%} to false
+			giveinv(loop-value)
+			add 1 to {1v1::wins::%loop-value%}
+			if {ranked::%{1vs1.a.%victim%}%} is true:
+				if {1v1::elo::%loop-value%} < {@Max_Elo}:
+					set {_maselo} to 5 or 10 or 7 or 8 or 9 or 10
+					add {_maselo} to {1v1::elo::%loop-value%}
+					send "{@prefix}&a&l +%{_menoselo}% Elo" to loop-value
+					if {1v1::elo::%loop-value%} > {@Max_Elo}:
+						set {1v1::elo::%loop-value%} to {@Max_Elo}
+			set loop-value's health to 20
+			set loop-value's hunger to 20
+			efectos(loop-value)
+		teleport {1vs1players.%{1vs1.a.%victim%}%::*} to {1vs1mainlobby}
+		remove {1vs1players.%{1vs1.a.%victim%}%::*} from {1vs1players.%{1vs1.a.%victim%}%::*}
+		clear {1v1block::%{1vs1.a.%victim%}%::*}
+		set {1vs1.status::%{1vs1.a.%victim%}%} to "&eRebuilding"
+		arenaliberar({1vs1.a.%victim%})
+		set {1vs1players.arena::%{1vs1.a.%victim%}%} to 0
+		signupdate({1vs1.a.%victim%})
+on quit:
+	clear {joinquit::%player%}
+	if {1v1player.lobby::%player%} or {1v1player.inpvp::%player%} is true:
+		make player execute command "/1vs1 leave"
+on damage of player:
+	if {1v1player.lobby::%victim%} is true:
+		cancel event
+	if {1v1player.inpvp::%victim%} is true:
+		if projectile is set:
+			if projectile is an arrow:
+				wait 0.3 seconds
+				send "{@prefix} &6&l➷ &a&l%victim%&7 has &c%health of victim% ❤ " to attacker		
+on drop:
+	if {1v1player.lobby::%player%} or {1v1player.inpvp::%player%} is true:
+		cancel event
+on hunger meter change:
+	if {1v1player.lobby::%player%} is true:
+		cancel event
+on inventory click:
+	if {1v1player.lobby::%player%} is true:
+		cancel event
+on break:
+	if {1v1player.lobby::%player%} is true:
+		cancel event
+	if {1v1player.inpvp::%player%} is true:
+		if {modebuild::%{1vs1.a.%player%}%} is true:
+			if {1v1block::%{1vs1.a.%player%}%::%location of event-block%} is not set:
+				cancel event
+				send "{@prefix}&7 You can only break blocks that has been placed."
+		else:
+			cancel event
+on command:
+	if {1v1player.lobby::%player%} or {1v1player.inpvp::%player%} is true:
+		command isn't equal to "1vs1" or "1v1" or "reg" or "login"
+		cancel event
+		send "{@prefix}&c You can not execute commands inside the arena"
+on place:
+	if {1v1player.lobby::%player%} is true:
+		cancel event
+	if {1v1player.inpvp::%player%} is true:
+		if {modebuild::%{1vs1.a.%player%}%} is true:
+			add location of event-block to {1v1.placed-blocks.%{1vs1.a.%player%}%::*}
+			set {1v1block::%{1vs1.a.%player%}%::%location of event-block%} to true
+		else:
+			cancel event
+on left click with golden hoe:
+	if player has permission "omegaskywars.admin":
+		if name of player's tool is "&a&l1vs1 Wand. BuildPvp":
+			clicked block is set
+			clear {1vs1::pos::%player%::1}
+			cancel event
+			message "&6&l➤ Pos 1"
+			set {1vs1::pos::%player%::1} to location of clicked block
+on right click with golden hoe:
+	if player has permission "omegaskywars.admin":
+		if name of player's tool is "&a&l1vs1 Wand. BuildPvp":
+			clear {1vs1::pos::%player%::2}
+			clicked block is set
+			cancel event
+			message "&6&l➤ Pos 2"
+			set {1vs1::pos::%player%::2} to location of clicked block
+on inventory click:
+	if inventory name of player's current inventory is "&2&lArenas&3&l Ranked" or "&2&lArenas&8&l UnRanked":
+		cancel event
+		execute player command "/1vs1 join %uncolored name of clicked item%"
+		close player's inventory
+on inventory click:
+	if inventory name of player's current inventory is "&2&l1vs1 Stats" or "&2&lArenas&8&l UnRanked":
+		cancel event
+command /duel [<player>]:
+	trigger:
+		if arg 1 is not "%player%":
+			if {1v1player.lobby::%player%} and {1v1player.inpvp::%player%} is false:
+				if {1v1player.lobby::%arg 1%} and {1v1player.inpvp::%arg 1%} is false:
+					if {enviar::%player%::%arg 1%} is not set:
+						set {enviar::%player%::%arg 1%} to arg 1
+						set {recibir::%arg 1%::%player%} to player
+						send "&a&lYou challenge &6&l%arg 1%&a&l to a duel." to player
+						send "&6%player%&a challenge you to a duel. Put:&2&l /accept %player%&a o&c&l /deny %player%" to arg 1
+						if {ar::gui::%arg 1%} is not set:
+							open chest with 1 rows named "&2%player% duel" to arg 1
+							wait 1 ticks
+							format slot 2 of arg 1 with stained hardened clay:5 named "&a&lACCEPT" with lore "&eClick to accept the duel with %player%" to close then run [make arg 1 execute command "/accept %player%"]
+							format slot 6 of arg 1 with stained hardened clay:14 named "&c&lCANCEL" with lore "&eClick to cancel the duel with %player%" to close then run [make arg 1 execute command "/deny %player%"]
+						loop 30 times:
+							wait 1 seconds
+						clear {recibir::%arg 1%::%player%}
+						clear {enviar::%player%::%arg 1%}
+					else:
+						send "&c You already challenge this player."
+				else:
+					send "&c%arg 1% is in a game."
+			else:
+				send "&cYou cant do this when you are in a game."
+		else:
+			send "&c&lYou cant duel yourself"
+command /accept [<player>]:
+	trigger:
+		if {1v1player.lobby::%player%} or {1v1player.inpvp::%player%} is false:
+			if {1v1player.lobby::%arg 1%} or {1v1player.inpvp::%arg 1%} is false:
+				if "%{enviar::%arg 1%::%player%}%" is "%player%":
+					send "&a&lYou accept the duel with &6&l%arg 1%"
+					send "&6&l%player% &a&lAccept your duel." to arg 1
+					send "&e&l>> Searching game..."
+					clear {recibir::%player%::%arg 1%}
+					clear {enviar::%arg 1%::%player%}
+					loop {1vs1::listeUN::*}:
+						if {1vs1players.arena::%loop-value%} is 0:
+							if {1vs1.status::%loop-value%} is "&aWaiting...":
+								make player execute command "/1vs1 join %loop-value%"
+								make arg 1 execute command "/1vs1 join %loop-value%"
+								stop loop
+							else:
+								send "&c&lANY GAME ARE SEARCHED, TRY LATER" to player and arg 1
+						else:
+							send "&c&lANY GAME ARE SEARCHED, TRY LATER" to player and arg 1
+					if {1vs1::listeUN::*} is not set:
+						send "&c&lAt this time there is no arena created &8&l(UnRanked)" to player and arg 1
+								
+				else:
+					send "&cNow you dont have any challenge duel."
+			else:
+				send "&c%arg 1% is in arena now."
+		else:
+			send "&cYou cant do this when you are in a game"
+command /deny [<player>]:
+	trigger:
+		if "%{enviar::%arg 1%::%player%}%" is "%player%":
+			clear {recibir::%player%::%arg 1%}
+			clear {enviar::%arg 1%::%player%}
+			send "&aYou deny the challenge of &6%arg 1%"
+			send "&6%player%&c deny your challenge." to arg 1
+		else:
+			send "&cYou dont have any challenge duel."

@@ -1,0 +1,181 @@
+#==============================#
+#Yapımcı : ChoiseArtz
+#Skript Adı : Auto Broadcast
+#Version : 1.0
+#==============================#
+
+command /autob [<text="info">] [<text>]:
+	permission: autob
+	permission message: &4Bunu kullanmak için yeterli yetkiye sahip değilsin.
+	aliases: ab
+	trigger:
+		player has permission "autobroadcast":
+			arg 1 is "on":
+				set {autobroadcast} to true
+				set {idmessage} to 1
+				send "&b[&e&lAutoBroadcast&b] &3ACİLDİ!"
+			arg 1 is "off":
+				set {autobroadcast} to false
+				send "&b[&e&lAutoBroadcast&b] &3KAPANDİ!"
+				stop
+			arg 1 is "info":
+				send "&b[&e&lAutoBroadcast&b] &3/autob on"
+				send "&b[&e&lAutoBroadcast&b] &3/autob off"
+
+
+every 5 minutes:
+	if {autobroadcast} is true:
+		wait 1 tick
+		if {idmessage} is 1:
+			broadcast "&b[&e&lAutoBroadcast&b] &3mesajı &6skript/scripts/autob.sk &3dan değiştirebilirsiniz."
+			set {idmessage} to 2
+			stop
+		if {idmessage} is 2:
+			broadcast "&b[&e&lAutoBroadcast&b] &3mesajı &6skript/scripts/autob.sk &3dan değiştirebilirsiniz."
+			set {idmessage} to 3
+			stop
+		if {idmessage} is 3:
+			broadcast "&b[&e&lAutoBroadcast&b] &3mesajı &6skript/scripts/autob.sk &3dan değiştirebilirsiniz."
+			set {idmessage} to 4
+			stop
+		if {idmessage} is 4:
+			broadcast "&b[&e&lAutoBroadcast&b] &3mesajı &6skript/scripts/autob.sk &3dan değiştirebilirsiniz."
+			set {idmessage} to 5
+			stop
+		if {idmessage} is 5:
+			broadcast "&b[&e&lAutoBroadcast&b] &3mesajı &6skript/scripts/autob.sk &3dan değiştirebilirsiniz."
+			set {idmessage} to 6
+			stop
+		if {idmessage} is 6:
+			broadcast "&b[&e&lAutoBroadcast&b] &3mesajı &6skript/scripts/autob.sk &3dan değiştirebilirsiniz."
+			set {idmessage} to 1
+			stop
+			
+			
+#Spawn Skript
+on first login:
+    teleport player to {setilk}
+
+on login:
+    teleport player to {setbaslangic}
+
+command /setbas:
+    trigger:
+        player has the permission "bas.admin"
+        set {setbaslangic} to location of player
+        send "&6Baslangic Yeri Ayarlandi" to player
+     
+command /setilk:
+    trigger:
+        player has the permission "ilkbas.admin"
+        set {setilkbaslangic} to location of player
+        send "&6Ilk Baslangic Yeri Ayarlandi" to player
+		
+		
+#Rank Skript
+options:
+	prefix: &7[&cBuildUHC&7] &r
+	MainColour: &b
+	SecondColour: &7
+	ThirdColour: &c
+	HalfLine: &m---------------------
+	Command: /takas
+	Aliases: /pl, /?, /bukkit:Help,
+on load:
+    wait 2 second
+    send "&b[&aBuildUHC&b] Sunucu Ozel Skripti Yuklendi" to console
+on unload:
+    wait 2 second
+    send "&b[&aBuildUHC&b] Sunucu Ozel Skripti Kaldirildi" to console
+
+command /iron [<player>]:
+    trigger:
+        if player has permissions "rank.builduhc":
+            if player-argument is set:
+                run player command "/manuadd %player-argument% iron" as op
+                run player command "/msg %player-argument% &c%player-argument% &6IRON &cRankina Yukseldiniz!" as op
+                broadcast "&8[&cDuyuru&8] &3%player-argument% &2Adli Oyuncu Sunucumuzda Iron Rankina Yukseltilmistir!"
+            else:
+                send "&bLutfen Rank Satin Alan Oyuncunun Ismini Yaziniz!" to player
+        else:
+            send "&eBu Komutu Kullanmak Icin En Yuksek Rankda Bulunmalisin!" to player
+command /gold [<player>]:
+    trigger:
+        if player has permissions "rank.builduhc":
+            if player-argument is set:
+                run player command "/manuadd %player-argument% gold" as op
+                run player command "/msg %player-argument% &c%player-argument% &6GOLD &cRankina Yukseldiniz!" as op
+                broadcast "&8[&cDuyuru&8] &3%player-argument% &2Adli Oyuncu Sunucumuzda Gold Rankina Yukseltilmistir!"
+            else:
+                send "&bLutfen Rank Satin Alan Oyuncunun Ismini Yaziniz!" to player
+        else:
+            send "&eBu Komutu Kullanmak Icin En Yuksek Rankda Bulunmalisin!" to player
+command /diamond [<player>]:
+    trigger:
+        if player has permissions "rank.builduhc":
+            if player-argument is set:
+                run player command "/manuadd %player-argument% diamond" as op
+                run player command "/msg %player-argument% &c%player-argument% &6DIAMOND &cRankina Yukseldiniz!" as op
+                broadcast "&8[&cDuyuru&8] &3%player-argument% &2Adli Oyuncu Sunucumuzda Diamond Rankina Yukseltilmistir!"
+            else:
+                send "&bLutfen Rank Satin Alan Oyuncunun Ismini Yaziniz!" to player
+        else:
+            send "&eBu Komutu Kullanmak Icin En Yuksek Rankda Bulunmalisin!" to player
+command /platinum [<player>]:
+    trigger:
+        if player has permissions "rank.builduhc":
+            if player-argument is set:
+                run player command "/manuadd %player-argument% platinum" as op
+                run player command "/msg %player-argument% &c%player-argument% &6PLATINUM &cRankina Yukseldiniz!" as op
+                broadcast "&8[&cDuyuru&8] &3%player-argument% &2Adli Oyuncu Sunucumuzda Platinum Rankina Yukseltilmistir!"
+            else:
+                send "&bLutfen Rank Satin Alan Oyuncunun Ismini Yaziniz!" to player
+        else:
+            send "&eBu Komutu Kullanmak Icin En Yuksek Rankda Bulunmalisin!" to player
+command /youtuber [<player>]:
+    trigger:
+        if player has permissions "rank.builduhc":
+            if player-argument is set:
+                run player command "/manuadd %player-argument% youtuber" as op
+                run player command "/msg %player-argument% &c%player-argument% &6YOUTUBER &cRankina Yukseldiniz!" as op
+                broadcast "&8[&cDuyuru&8] &3%player-argument% &2Adli Oyuncu Sunucumuzda Youtuber Rankina Yukseltilmistir!"
+            else:
+                send "&bLutfen Rank Satin Alan Oyuncunun Ismini Yaziniz!" to player
+        else:
+            send "&eBu Komutu Kullanmak Icin En Yuksek Rankda Bulunmalisin!" to player
+			
+			
+			
+#SohbetRengi
+
+command /renk:
+	permission : cc.renk
+	permission message : &4Bu Komudu Kullanmak İcin Yetkin Bulunmuyor!
+	trigger:
+		open chest with 1 rows named "&d&oChatColor Menüsü&r" to player
+		format slot 0 of player with red glass pane named "&cAçık Kırmızı" to close then run "renkayarla %player% Light Red"
+		format slot 1 of player with light blue glass pane named "&3Açık Mavi" to close then run "renkayarla %player% Cyan"
+		format slot 2 of player with purple glass pane named "&5Mor" to close then run "renkayarla %player% Purple"
+		format slot 3 of player with light green glass pane named "&aAçık Yeşil" to close then run "renkayarla %player% Light Green"
+		format slot 4 of player with light gray glass pane named "&7Açık Gri" to close then run "renkayarla %player% Light Gray"
+		format slot 5 of player with yellow glass pane named "&eSarı" to close then run "renkayarla %player% Yellow"
+		format slot 6 of player with green glass pane named "&2Yeşil" to close then run "renkayarla %player% Green"
+		format slot 7 of player with blue glass pane named "&1Mavi" to close then run "renkayarla %player% Blue"
+		format slot 9 of player with white glass pane named "&f&l&oRengi Sıfırla" to close then run "renksifirla %player%"
+command /renkayarla <player> <text>:
+	usage : /renkayarla [oyuncu] [renk]
+	executable by : console
+	trigger:
+		if arg 1 is set:
+			set {chatrengi.%arg 1%} to arg 2
+			wait 3 ticks
+			message "&6[&5CColor&6]&a Istedigin renk basariyla &5%{chatrengi.%arg 1%}%&a olarak ayarlandi" to arg 1
+on chat:
+	if {chatrengi.%player%} is set:
+		set message to "<%{chatrengi.%player%}%>%message%"
+
+command /renksifirla <player>:
+	executable by: console
+	trigger:
+		delete {chatrengi.%arg 1%}
+		message "&6[&5CColor&6]&a Konusma rengi basariyla sifirlandi" to arg 1

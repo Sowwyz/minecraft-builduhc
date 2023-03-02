@@ -1,0 +1,6 @@
+# Change permission to 'none' to
+# disable permission requirement
+permission:
+  fix_self: none
+  fix_others: playerfixcommand.fixothers
+delay: 5

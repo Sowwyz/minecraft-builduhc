@@ -1,0 +1,11 @@
+# 
+# +------------------------------------------------------+ #
+# |                     Server MOTD                      | #
+# |                     Version 2.2                      | #
+# +------------------------------------------------------+ #
+Server MOTD: '              &4&k||&6&lBuildUHC&4&k|| &Sowwyz!                                               &e&l- &a&l1.8 &e&l-'
+JoinGame MOTD:
+  Allow: false
+  Messages:
+  - default motd
+Max Players: false

@@ -1,0 +1,6 @@
+ip=localhost
+port=9190
+heartbeat=1000
+name=UNSET
+pass=UNSET
+debug=false

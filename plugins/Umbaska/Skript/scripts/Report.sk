@@ -1,0 +1,52 @@
+options:
+    logo: &7[&c&lBuildUHC-Report&7] #Prefix du skript
+    delay: 30 seconds #Delay entre chaque reports
+ 
+ 
+#Commande principale
+ 
+command /report [<player>] [<text>]:
+    trigger:
+        if arg 1 is player:
+            send "&cReport edeceğin kişinin ismi ve sebebini yaz yoksa ban yemez  !"
+            stop
+        if arg 1 is not set:
+            send "&cUtilisation: /report <joueur> <raison>"
+            stop
+        if arg 2 is not set:
+            send "&cUtilisation: /report <joueur> <raison>"
+            stop
+        if {report.cooldown.%player%} is false:
+            send "&aMerci pour votre report !" to player
+            execute console command "/reportnotif &7[&c&lREPORT&7] &a%player% &7 a report &c%arg 1% &7 pour (&4%arg 2%&7)"
+            set {report.cooldown.%player%} to true
+            wait {@delay}
+            set {report.cooldown.%player%} to false
+            send "&aVous pouvez de nouveau report !" to player
+        if {report.cooldown.%player%} is true:
+            send "&cAttendez pour un prochain report!"
+on join:
+    set {report.cooldown.%player%} to false
+    set {alerts.%player%} to false
+ 
+#Commande pour le message
+ 
+command /reportnotif <text>:
+    trigger:
+        loop all players:
+            if loop-player have permission "report.notify":
+                if {alerts.%loop-player%} is set:
+                    send "&c%arg 1%" to loop-player
+ 
+#Commande pour désactiver / activer les alertes   
+ 
+command /reportalerte:
+    permission: report.mod
+    aliases: /reportalerts, /reportalertes
+    trigger:
+        if {alerts.%player%} is not set:
+            set {alerts.%player%} to false
+            send "{@logo} &7&l>> &aAlertes des reports activées !"
+        else:
+            delete {alerts.%player%}
+            send "{@logo} &7&l>> &cAlertes des reports désactivées !"
