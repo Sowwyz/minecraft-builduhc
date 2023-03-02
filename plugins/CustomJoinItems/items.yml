@@ -1,0 +1,55 @@
+ranked:
+  name: '&cRanked'
+  id: 276
+  slot: 1
+  lore:
+    - '&4Ranked BuildUHC'
+  command: '1vs1 listranked'
+  cooldown-seconds: 1
+unranked:
+  name: '&aUnRanked'
+  id: 267
+  slot: 2
+  lore:
+    - '&2UnRanked BuildUHC'
+  command: '1vs1 listunranked'
+  cooldown-seconds: 1
+team:
+  name: '&6Team &2| &3Coming Soon...'
+  id: 286
+  slot: 4
+  lore:
+    - '&6Team BuildUHC Coming Soon...'
+  cooldown-seconds: 1
+kills:
+  name: '&aTop Kills'
+  id: 283
+  slot: 6
+  lore:
+    - '&2Top Kills'
+  command: '1vs1 top kills'
+  cooldown-seconds: 1
+wins:
+  name: '&aTop Wins'
+  id: 264
+  slot: 7
+  lore:
+    - '&2Top Wins'
+  command: '1vs1 top wins'
+  cooldown-seconds: 1
+elo:
+  name: '&aTop Elo'
+  id: 322
+  slot: 8
+  lore:
+    - '&2Top Elo'
+  command: '1vs1 top elo'
+  cooldown-seconds: 1
+stats:
+  name: '&a&lStats'
+  id: 399
+  slot: 9
+  lore:
+    - '&2Stats'
+  command: '1vs1 stats'
+  cooldown-seconds: 1

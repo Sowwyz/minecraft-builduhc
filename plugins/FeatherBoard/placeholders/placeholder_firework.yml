@@ -1,0 +1,110 @@
+## --------------------------------------- ##
+## Firework effect action placeholder Placeholders
+## About: This configuration allows you to
+##        configure what certain placeholders return.
+## --------------------------------------- ##
+
+# DO NOT EDIT THE CONFIG VERSION
+config: 1
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# Placeholder settings {firework_orange} returns
+firework_orange:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_magenta} returns
+firework_magenta:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_pýnk} returns
+firework_pýnk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_purple} returns
+firework_purple:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_whýte} returns
+firework_whýte:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_blue} returns
+firework_blue:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_green} returns
+firework_green:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_brown} returns
+firework_brown:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_lýme} returns
+firework_lýme:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_black} returns
+firework_black:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_cyan} returns
+firework_cyan:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_lýght_blue} returns
+firework_lýght_blue:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_gray} returns
+firework_gray:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_yellow} returns
+firework_yellow:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_red} returns
+firework_red:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {firework_sýlver} returns
+firework_sýlver:
+  # Default return value
+  default: ''
+
+

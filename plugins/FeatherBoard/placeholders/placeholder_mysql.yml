@@ -1,0 +1,24 @@
+## --------------------------------------- ##
+## MySQL Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# Placeholders under this list will have the prefix {mysql_.....}
+placeholders: [] # Remove the [] when you have something under this
+#  example: # {mysql_example}
+#    # Description of the placeholder. Used for help message
+#    description: 'This is an example placeholder with MySQL queries'
+#    hostname: 'localhost'
+#    port: 3306
+#    database: 'minecraft'
+#    username: 'root'
+#    password: ''
+#    # A select query used to get 1 row and 1 column result
+#    query: "SELECT amount FROM MoneyTable WHERE player = '{playeruuid}'"

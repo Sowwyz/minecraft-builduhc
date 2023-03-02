@@ -1,0 +1,7 @@
+#             ---- + Custom Join Items + ----
+#           
+# Website: dev.bukkit.org/bukkit-plugins/custom-join-items
+#              
+#             ---- + ------------------ + ----
+update-notifications: true
+clear-inventory-on-join: false

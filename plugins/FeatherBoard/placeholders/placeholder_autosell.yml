@@ -1,0 +1,26 @@
+## --------------------------------------- ##
+## AutoSell Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 1
+
+# Configure the output message for in sell mode boolean
+insellmode:
+  true: 'True'
+  false: 'False'
+  
+# Configure the output message for in smelt mode boolean
+insmeltmode:
+  true: 'True'
+  false: 'False'
+  
+# Configure the output message for has shop boolean
+hasshop:
+  true: 'True'
+  false: 'False'
+  
+# Configure the output message for has multiplier boolean
+hasmultiplier:
+  true: 'True'
+  false: 'False'

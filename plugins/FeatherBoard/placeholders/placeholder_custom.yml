@@ -1,0 +1,27 @@
+## --------------------------------------- ##
+## Custom Skript Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# Add your own placeholders under this category
+placeholders:
+  ismaximcool: # this would be used as {ismaximcool}
+    condition: "true" # has to be 'true' or 'false'  (in this case ofc true)
+    true: "Ofc he is"
+    false: "ERROR"
+  healthyornot: # this would be used as {healthyornot}
+    condition: "{health} > 10" # You can use other placeholders here
+    true: "&aYou are healthy!"
+    false: "&cEat something ..."
+  nearbed: # this would be used as {nearbed}
+    # So, this gets the absolute difference of your position minus your bed position and checks if its closer then 10
+    condition: "(Math.abs({x} - {bed_x}) < 10) && (Math.abs({y} - {bed_y}) < 10) && (Math.abs({z} - {bed_z}) < 10)"
+    true: "You are close"
+    false: "Not so close"

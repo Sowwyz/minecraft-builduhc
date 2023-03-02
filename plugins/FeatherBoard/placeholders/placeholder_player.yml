@@ -1,0 +1,22 @@
+## --------------------------------------- ##
+## Player Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 3
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+firstplayed: # %firstplayed% Date formatting
+  format: 'dd MMMM yyyy'
+  
+lastplayed: # %lastplayed% Date formatting
+  format: 'dd MMMM yyyy'
+  
+isplayeronline:
+  # use {player} to use the player using 
+  true: '{player}'
+  false: ''

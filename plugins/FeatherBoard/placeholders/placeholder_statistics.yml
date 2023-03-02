@@ -1,0 +1,20 @@
+## --------------------------------------- ##
+## Statistics Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+blocksmined:
+  blocks: # Names: http://minecraft-ids.grahamedgecombe.com/
+  - 'STONE'
+  - 'IRON_ORE'
+  - 'DIAMOND_ORE'
+  - 'REDSTONE_ORE'
+  - 'GOLD_ORE'
+  - 'COAL_ORE'

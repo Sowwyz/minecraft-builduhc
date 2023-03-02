@@ -1,0 +1,95 @@
+Full tutorial: http://dev.bukkit.org/bukkit-plugins/custom-join-items
+________________________________________________________________________
+
+This file will only list ALL the possible nodes for each item, and the latest changelog.
+The item below is an example.
+
+item:
+
+
+    id: 352
+    # (REQUIRED) The ID of the material.
+    
+    
+    name: '&aTest item'
+    # (REQUIRED) The custom name of the item (with formatting codes).
+    
+    
+    data-value: 0
+    # This is optional. Can be used for colored wool, and other items with data values.
+    
+    
+    command: 'say Hello world'
+    # The command bound to this item. It will be executed when the item is right clicked.
+    # Can be executed as OP, as the console, but also connect to a BungeeCord server or
+    # just tell something to the player. Put one of this possible options before the
+    # command to use them:
+    #
+    # command: 'console:say This command is executed from the console.'
+    #
+    # Valid options are:
+    # 
+    # 'console: '
+    # 'op: '
+    # 'server: ' (for BungeeCord)
+    # 'tell: ' (sends a message to the player)
+    #
+    # You can use symbols, and the placeholders %player% and %world%.
+    # Use multiple commands with a semicolon (;) e.g.: 'tell: This is; tell: a double command.'
+    
+    
+    cooldown-seconds: 5
+    # Limits the use of an item.    
+    
+    
+    lore:
+      - 'Line 1'
+      - 'Line 2'
+      - '...'
+    # The lore of the item (with formatting codes).
+    
+    
+    slot: 9
+    # If omitted, the item will be placed in the first empty slot.
+    # If set, the item will attempt to place in that hotbar's slot, and it will move
+    # any existing item that is in that slot, if there's enough space in the inventory.
+    
+    
+    permission: 'customjoinitems.test'
+    # The item required to obtain the item on join. If not set, everyone will get the item.
+    
+    
+    block-movement: false
+    # (default = false)
+    # If true, the player cannot move the item in his inventory.
+    
+    
+    first-join-only: false
+    # (default = false)
+    # If true, the player will get the item only when they join the server the first time.
+    # NOTE: give-at-respawn will automatically be set to false, if this node is true.
+    
+    
+    give-at-respawn: true
+    # (default = true)
+    # If set to true, the player will receive the item when he dies and respawn.
+    
+    
+    allow-drop: false
+    # (default = false)
+    # Allows players to drop the item.
+    
+    
+    give-on-world-change: false
+    # (default = false)
+    # The plugin will eventually give the item to the players when they change world.
+    # Useful if you have Multiverse or similar plugins.
+    
+    
+    disabled-worlds: world_nether, world_the_end
+    # a list of disabled worlds separated by commas. If you don't want to disable
+    # an item in some worlds, remove this node or set it to ''.
+    
+    
+    
+    

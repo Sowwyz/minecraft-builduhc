@@ -1,0 +1,21 @@
+## --------------------------------------- ##
+## Economy Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# Formatted money settings
+money_formatted:
+  fix_thousands: true
+  fix_millions: true
+  thousands_format: k
+  millions_format: M
+  billions_format: B
+  trillions_format: T
+  quadrillions_format: Q

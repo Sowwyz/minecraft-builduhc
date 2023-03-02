@@ -1,0 +1,22 @@
+#----------------------------------------
+# Vanilla player first join
+# Player first joining
+# 
+#----------------------------------------
+
+# DO NOT EDIT THIS CONFIG VERSION!
+config: 1
+
+
+# Do you want to enable this event hook?
+# Enabling this hook will trigger scoreboard
+# when the player first joins the server
+# for the player that first joined
+enabled: false
+
+# scoreboard to trigger
+scoreboard: 'default'
+
+
+# The time to display the scoreboard on the screen (in millseconds)
+onscreen-time: 5000

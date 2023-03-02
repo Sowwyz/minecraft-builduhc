@@ -1,0 +1,21 @@
+logoutlocation:
+  world: lobby
+  x: 115.72619300785844
+  y: 5.0
+  z: 348.6555589451892
+  yaw: 7.8334045
+  pitch: 12.812619
+timestamps:
+  logout: 1474716854267
+  login: 1474716535068
+lastAccountName: Sowwyz
+ipAddress: 127.0.0.1
+lastlocation:
+  world: 1vs1map
+  x: 75.1549241342915
+  y: 74.0
+  z: -19.051116980668738
+  yaw: 356.05066
+  pitch: 14.307772
+afk: false
+nickname: Sowwyz

@@ -1,0 +1,15 @@
+## --------------------------------------- ##
+## WorldGuard Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# If you do not use them, its best to turn this off
+# Especially when you have a lot of regions
+load-region-placeholders: true

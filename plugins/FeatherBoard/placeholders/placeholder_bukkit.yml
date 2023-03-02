@@ -1,0 +1,14 @@
+## --------------------------------------- ##
+## Bukkit Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+time: # %time% Time/Date formatting
+  format: 'HH:mm:ss'

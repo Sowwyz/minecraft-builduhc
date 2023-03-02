@@ -1,0 +1,189 @@
+# ------------------------------ #
+#
+#  FeatherBoard 1.9.0
+#  Runs like a feather on your server
+#  (c) Maxim Van de Wynckel
+#
+# ------------------------------ #
+
+# Permissions: To use the action groups give them the permission
+#              featherboard.group.<group>
+#              Make sure to remove them from the other groups
+#              when giving a new permission.
+
+# Variables: These variables can be used in the TEXT section
+#            of both the header as the footer.
+#            
+#            {PLAYER}       - Player name
+#            {PLAYERNICK}   - Player nickname
+#            {SERVER}       - Server name
+#            {PLAYERCOUNT}  - Server player count
+#            {BUNGEECOUNT}  - Bungee network player count
+#            850+ more ... see spigot page
+
+# Formatting: These are formatting tags allowing you to format the animations
+#             or placeholders.
+#
+#             Substring: This allows you to split a word (even a placeholder) in parts
+#               example: <substring begin=0 end=3>Hello World</substring> = Hel
+#               usage: This can be used to split placeholders when creating a typewriter
+#                      or to split the colors in a placeholder.
+#
+#             Scroll: This creates a scrolling animation of the text inside it. It accepts
+#                     two arguments (the length and space between scrolls).
+#               example: <scroll width=20 spaces=20>&2This is a &atest</scroll>
+#
+#             PLENTY MORE! See spigot page
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# GENERAL PLUGIN SETTINGS
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+## Config version (DO NOT EDIT)
+config: 1
+
+## Language file
+lang: 'en'
+
+## Debug mode
+debug: false
+
+## Log to file
+log: true
+
+## Update checking
+update:
+  check: true # RECOMMENDED YOU LEAVE THIS TRUE
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# PLUGIN SPECIFIC SETTINGS
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+# Tweaks to increase performance (Use at own risk)
+tweaks:
+  # This option does not send scoreboard remove packets
+  # to the client on quit. This can increase performance on servers
+  # where players quit a lot (hubs, ...)
+  #
+  # Removal of the plugin requires you to manually delete the scoreboard.dat in the worlds
+  # /data folder
+  #
+  # Enabling this can cause the scoreboard not to work anymore. Use at your own risk
+  keepScoreboardOnQuit: false
+  
+
+# Anti Flicker will use a new engine that will allow you to use fast animations
+# without any flicker. This is an EXPERIMENTAL feature and it asked to post bugs
+# and problems that only occur with this option enabled in a Spigot private message.
+# Using this option shortens the maximum length for 1.8 servers to around 26~28 chars
+# but this is an increase for 1.7 clients (that default only have 16 characters)
+# IF YOU ARE HAVING PROBLEMS. TRY TO TURN THIS OFF FIRST
+antiflicker: true
+
+# A list of different scoreboards
+boards:
+  default:
+    title: # The first element in the group will be title.
+      # We will show the server name animated, with a glow effect every 20 sec{lastplayed}
+      text:
+      - '<delay times=3>&8&l   &6&lBuildUHC&8&l   </delay>'
+      # Interval the animation loops in ticks (20 ticks = 1 sec)
+      # If you need waiting intervals look at the DELAY placeholder
+      interval: 4
+      # Do you want to randomize the animation frames?
+      random: false
+    header: # A header is recommended to make sure the scoreboard remains the same size
+      text:
+      - ''
+      interval: 100
+      random: false
+    player-label: # You can add elements to the group and name them like you want
+      # Lets make a static label
+      text:
+      - '&7&l{175} &f&lSen'
+      interval: 100 # The interval is not important since its just 1 static text.
+      # Do you want to randomize the animation frames?
+      random: false
+    player: # Under the label we will show the actual player name
+      text:
+      - '&6{PLAYER}'
+      interval: 100
+      # Do you want to randomize the animation frames?
+      random: false
+    spacer-player: # This is a spacer an empty line
+      text:
+      - ''
+      interval: 100
+      # Do you want to randomize the animation frames?
+      random: false
+    news-label:
+      text:
+      - '&2{PLAYER}'
+      interval: 100
+      # Do you want to randomize the animation frames?
+      random: false
+      spacer-player: # This is a spacer an empty line
+      text:
+      - ''
+      interval: 100
+      # Do you want to randomize the animation frames?
+      random: false
+    news-label:
+      text:
+      - '&7&l{175} &fZaman'
+      - '&7&l{175} &fTarih'
+      interval: 100
+      # Do you want to randomize the animation frames?
+      random: false
+    news:
+      # Lets create some animated news
+      # News is something you need to write quick
+      # and usually you don't want to spend ages on creating
+      # some cool effect. That is why FeatherBoard features
+      # several presets you can use.
+      text:
+      - '&e{time}'
+      interval: 1 # When using preset effects. The interval will apply to that effect
+      # Do you want to randomize the animation frames?
+      random: false
+    spacer-news: # Another spacer (empty line)
+      text:
+      - '&e{lastplayed}'
+      interval: 100
+      random: false
+    moneytimesplayed-label: #Switch between site, times played and health      - '&7&l{175} &fSunucu'
+      text:
+      - ''
+      interval: 100
+      random: false
+    moneytimesplayed: #Switch between site, times played and health
+      text:
+      - '&7&l{175} &fBilgiler'
+      interval: 100
+      random: false
+    spacer-money: # Another spacer (empty line) again you don't need to call this 'spacer'      - '&6TR &eFFA-1'
+      text:
+      - '&6Oldurme&7: &e{stat_pkills}'
+      interval: 100
+      random: false
+    server-label: # Server status label      - '&7&l{175} &fOyuncular'
+      text:
+      - '&6Olme&7: &e{stat_deaths}'
+      interval: 100
+      random: false
+    server: # Server status (ram and tps)      - '&6Cevrimici &e{onlineplayers}'
+      text:
+      - '&7&l{175} &fPing'
+      interval: 1
+      random: false
+    footer: # A footer is recommended to make sure the scoreboard remains the same size
+      text:
+      - '&6{ping} &eMS'
+      interval: 100
+      random: 
+    server:
+     text:
+      - '&6Cevrimici &e{onlineplayers}'
+      interval: 1
+      random: false
+  

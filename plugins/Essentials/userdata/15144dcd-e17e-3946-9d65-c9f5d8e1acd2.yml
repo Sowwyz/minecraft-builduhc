@@ -1,0 +1,50 @@
+lastAccountName: Sowwyz
+timestamps:
+  login: 1677738217430
+  lastteleport: 1677726536557
+  logout: 1677738462950
+ipAddress: 127.0.0.1
+lastlocation:
+  world: arena
+  x: 4.625165313803993
+  y: 79.0
+  z: 7.105029024456627
+  yaw: -28.242884
+  pitch: 18.365444
+homes:
+  home:
+    world: flatroom
+    x: -0.5315386842577889
+    y: 100.0
+    z: 0.5171774907544887
+    yaw: -178.55328
+    pitch: -1.4716097
+  1vs1:
+    world: 1vs1map
+    x: 79.57602332930426
+    y: 76.49355895058922
+    z: 47.38808187460309
+    yaw: 91.59987
+    pitch: 77.50367
+  1vs2:
+    world: 1vs1map
+    x: 39.30000001192093
+    y: 75.53484770344424
+    z: 44.44660945319847
+    yaw: 271.667
+    pitch: -5.995433
+  spawn:
+    world: flatroom
+    x: -0.6698336880498922
+    y: 100.0
+    z: 0.6822112170374629
+    yaw: -176.2618
+    pitch: 28.482828
+afk: false
+logoutlocation:
+  world: flatroom
+  x: 0.5075121872423978
+  y: 100.0
+  z: -53.26297420423185
+  yaw: -30.230072
+  pitch: 34.7099

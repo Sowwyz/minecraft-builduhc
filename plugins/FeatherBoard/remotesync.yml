@@ -1,0 +1,44 @@
+# ---------------------------- #
+# Remote Configuration Syncing #
+# v1.0.0                       #
+# (c) MVdW Software            #
+# ---------------------------- #
+
+# Description: This MVdW Software design will allow
+# you to sync your plugin config with other servers
+# You have two types of configuration:
+# - 1 Master configuration
+# - 1 or more Slave configurations
+#
+# The master is the plugin/server that will be used
+# as the main config.
+# The slaves will USE (not copy) the config of the master
+# When the master is offline, the slaves will use their own
+# config (or the last fetched config).
+
+# When enabled the configuration must be valid
+enabled: false
+
+# Define if the configuration of this server
+# will be used as the master config.
+master: false
+
+# THESE SETTINGS ONLY APPLY IF THIS SERVER
+# IS THE MASTER
+master-config:
+  # Port used to listen for slaves
+  port: 7899
+  # Password to identify the slaves (DO NOT USE SOMETHING YOU USE ELSEWHERE)
+  password: 'Sowwyz3131'
+
+# THESE SETTINGS ONLY APPLY IF THIS SERVER
+# IS A SLAVE
+slave-config:
+  # Hostname or IP of the master
+  hostname: 'localhost'
+  # Port used by the master
+  port: 7899
+  # Password used by the master
+  password: 'Sowwyz3131'
+  # Sync interval IN MINUTES (you can force a sync using a command)
+  interval: 5 

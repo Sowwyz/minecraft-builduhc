@@ -1,0 +1,22 @@
+#----------------------------------------
+# Vanilla Death hook
+# Player Death hook in minecraft
+# 
+#----------------------------------------
+
+# DO NOT EDIT THIS CONFIG VERSION!
+config: 1
+
+
+# Do you want to enable this event hook?
+# Enabling this hook will trigger scoreboard
+# when the player dies
+# for the player that dies
+enabled: false
+
+# scoreboard to trigger
+scoreboard: 'default'
+
+
+# The time to display the scoreboard on the screen (in millseconds)
+onscreen-time: 5000

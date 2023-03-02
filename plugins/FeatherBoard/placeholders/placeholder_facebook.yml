@@ -1,0 +1,24 @@
+## --------------------------------------- ##
+## Facebook Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 3
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+facebook:
+  # Page or user Id to get posts from
+  # You can get the ID using: https://developers.facebook.com/tools/explorer
+  # Example of getting the mineplex page: http://i.mvdw-software.com/15-05-2015_11-18-30.png
+  # Example of getting the minecraft page: http://i.mvdw-software.com/17-05-2015_00-28-49.png
+  # Example of how it looks: http://i.mvdw-software.com/17-05-2015_00-30-55.png
+  pageid: '165039663531531'
+  
+date-format: 'dd MMMM yyyy HH:mm:ss'
+  
+# interval in ticks to fetch the twitter
+interval: 18000 # Has to be higher then 18000 (15min)

@@ -1,0 +1,20 @@
+## --------------------------------------- ##
+## Twitter Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 2
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+twitter:
+  # Account page to fetch timeline from
+  account: '' #Example: MVdWSoftware
+  
+date-format: 'dd MMMM yyyy HH:mm:ss'
+  
+# interval in ticks to fetch the twitter
+interval: 18000 # Has to be higher then 18000 (15min)

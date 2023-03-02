@@ -1,0 +1,72 @@
+users:
+  15144dcd-e17e-3946-9d65-c9f5d8e1acd2:
+    lastname: Sowwyz
+    group: youtuber
+    subgroups: []
+    permissions: []
+  3d195d6e-8f7d-3a86-92cf-dbab50e0e19d:
+    lastname: RedBully
+    group: Kurucu
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  5068dbe7-5e84-346c-8f11-2537208858c3:
+    lastname: Smu_
+    group: Oyuncu
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  55479848-a7de-3e2a-b300-0cc642f3988f:
+    lastname: Aguus
+    group: Admin
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  6ce38c0d-a219-339f-ba1e-60ceeedca91b:
+    lastname: Lokradu
+    group: Oyuncu
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  7ff2ad7b-3058-4659-a9be-e8b0ce33d824:
+    lastname: ConiFugaaan
+    group: Kurucu
+    subgroups: []
+    permissions: []
+  alexeyfast:
+    group: Admin
+    subgroups: []
+    permissions: []
+  be263510-2fd5-3d64-910b-8682c42d5882:
+    lastname: BCHetobrine
+    group: Oyuncu
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  c3a161b8-f31d-35a1-b5b6-5f4971b5faf3:
+    lastname: bcherobrine
+    group: Oyuncu
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  d26f43b5-3762-3514-9c30-6456ab3bc818:
+    lastname: BooSterDr0p
+    group: Kurucu
+    subgroups: []
+    permissions: []
+    info:
+      prefix: ''
+  hitman:
+    group: Kurucu
+    subgroups: []
+    permissions: []
+  Wolfran:
+    group: Kurucu
+    subgroups: []
+    permissions: []

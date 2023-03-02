@@ -1,0 +1,10 @@
+## --------------------------------------- ##
+## Towny Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 1
+
+town_name: # %towny_town_name% Name format {TOWN} is the name without any colors
+  format: '&f~&6&o{TOWN}'
+# format: '{TOWN}'

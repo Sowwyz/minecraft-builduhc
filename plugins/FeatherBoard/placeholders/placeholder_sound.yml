@@ -1,0 +1,1178 @@
+## --------------------------------------- ##
+## Sound action placeholders Placeholders
+## About: This configuration allows you to
+##        configure what certain placeholders return.
+## --------------------------------------- ##
+
+# DO NOT EDIT THE CONFIG VERSION
+config: 1
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# Placeholder settings {sound_hurt_flesh} returns
+sound_hurt_flesh:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ýrongolem_throw} returns
+sound_ýrongolem_throw:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_hurt} returns
+sound_wolf_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_ýdle} returns
+sound_zombýe_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ýrongolem_hýt} returns
+sound_ýrongolem_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_výllager_haggle} returns
+sound_výllager_haggle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_door_close} returns
+sound_door_close:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_výllager_death} returns
+sound_výllager_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sýlverfýsh_hýt} returns
+sound_sýlverfýsh_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_zombýe_ýdle} returns
+sound_horse_zombýe_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_blast} returns
+sound_fýrework_blast:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_arrow_hýt} returns
+sound_arrow_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_wood} returns
+sound_horse_wood:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_donkey_hýt} returns
+sound_donkey_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ambýence_raýn} returns
+sound_ambýence_raýn:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_lava} returns
+sound_lava:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_launch} returns
+sound_fýrework_launch:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_zombýe_death} returns
+sound_horse_zombýe_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_pýg_angry} returns
+sound_zombýe_pýg_angry:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_slýme_attack} returns
+sound_slýme_attack:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_wool} returns
+sound_step_wool:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_blaze_death} returns
+sound_blaze_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_sand} returns
+sound_dýg_sand:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wood_clýck} returns
+sound_wood_clýck:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cat_meow} returns
+sound_cat_meow:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_magmacube_walk2} returns
+sound_magmacube_walk2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_soft} returns
+sound_horse_soft:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_pýg_walk} returns
+sound_pýg_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_stone} returns
+sound_step_stone:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cat_hýt} returns
+sound_cat_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_pýston_extend} returns
+sound_pýston_extend:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_ýdle} returns
+sound_horse_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fuse} returns
+sound_fuse:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_bass} returns
+sound_note_bass:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_gallop} returns
+sound_horse_gallop:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_twýnkle} returns
+sound_fýrework_twýnkle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýzz} returns
+sound_fýzz:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_door_open} returns
+sound_door_open:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_pýston_retract} returns
+sound_pýston_retract:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_pýano} returns
+sound_note_pýano:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_creeper_death} returns
+sound_creeper_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fall_býg} returns
+sound_fall_býg:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wýther_shoot} returns
+sound_wýther_shoot:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ghast_fýreball} returns
+sound_ghast_fýreball:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wýther_hurt} returns
+sound_wýther_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_donkey_angry} returns
+sound_donkey_angry:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_zombýe_hýt} returns
+sound_horse_zombýe_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ghast_death} returns
+sound_ghast_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_chýcken_hurt} returns
+sound_chýcken_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ambýence_thunder} returns
+sound_ambýence_thunder:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cow_walk} returns
+sound_cow_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderman_scream} returns
+sound_enderman_scream:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_pýg_death} returns
+sound_pýg_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_bat_death} returns
+sound_bat_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_glass} returns
+sound_glass:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_drýnk} returns
+sound_drýnk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_grass} returns
+sound_step_grass:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_stýcks} returns
+sound_note_stýcks:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_bass_guýtar} returns
+sound_note_bass_guýtar:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ýtem_break} returns
+sound_ýtem_break:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_sand} returns
+sound_step_sand:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_ladder} returns
+sound_step_ladder:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_creeper_hýss} returns
+sound_creeper_hýss:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderman_ýdle} returns
+sound_enderman_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_spýder_walk} returns
+sound_spýder_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_skeleton_death} returns
+sound_horse_skeleton_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_water} returns
+sound_water:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_howl} returns
+sound_wolf_howl:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_portal_travel} returns
+sound_portal_travel:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_mýnecart_ýnsýde} returns
+sound_mýnecart_ýnsýde:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_pýg_ýdle} returns
+sound_pýg_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_swým} returns
+sound_swým:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ghast_scream2} returns
+sound_ghast_scream2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_metal} returns
+sound_zombýe_metal:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_hurt} returns
+sound_zombýe_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_mýnecart_base} returns
+sound_mýnecart_base:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_donkey_ýdle} returns
+sound_donkey_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýre_ýgnýte} returns
+sound_fýre_ýgnýte:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_anvýl_break} returns
+sound_anvýl_break:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_portal_trýgger} returns
+sound_portal_trýgger:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_bat_ýdle} returns
+sound_bat_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ýtem_pýckup} returns
+sound_ýtem_pýckup:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_splash2} returns
+sound_splash2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_bass_drum} returns
+sound_note_bass_drum:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_wood} returns
+sound_zombýe_wood:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_blast2} returns
+sound_fýrework_blast2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_wood} returns
+sound_dýg_wood:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_unfect} returns
+sound_zombýe_unfect:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_stone} returns
+sound_dýg_stone:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sýlverfýsh_ýdle} returns
+sound_sýlverfýsh_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_orb_pýckup} returns
+sound_orb_pýckup:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_chýcken_walk} returns
+sound_chýcken_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ýrongolem_death} returns
+sound_ýrongolem_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ýrongolem_walk} returns
+sound_ýrongolem_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_burp} returns
+sound_burp:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cow_ýdle} returns
+sound_cow_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ghast_moan} returns
+sound_ghast_moan:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_walk} returns
+sound_zombýe_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_plýng} returns
+sound_note_plýng:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_growl} returns
+sound_wolf_growl:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderman_death} returns
+sound_enderman_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_pýg_hurt} returns
+sound_zombýe_pýg_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_hýt} returns
+sound_horse_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_spýder_ýdle} returns
+sound_spýder_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderdragon_wýngs} returns
+sound_enderdragon_wýngs:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_grass} returns
+sound_dýg_grass:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_saddle} returns
+sound_horse_saddle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sheep_shear} returns
+sound_sheep_shear:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_land} returns
+sound_horse_land:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_skeleton_ýdle} returns
+sound_horse_skeleton_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_note_snare_drum} returns
+sound_note_snare_drum:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_woodbreak} returns
+sound_zombýe_woodbreak:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_skeleton_ýdle} returns
+sound_skeleton_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_anvýl_land} returns
+sound_anvýl_land:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_remedy} returns
+sound_zombýe_remedy:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_large_blast} returns
+sound_fýrework_large_blast:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_level_up} returns
+sound_level_up:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_blaze_hýt} returns
+sound_blaze_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_skeleton_hýt} returns
+sound_horse_skeleton_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_bat_hurt} returns
+sound_bat_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_bat_loop} returns
+sound_bat_loop:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cat_hýss} returns
+sound_cat_hýss:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_výllager_ýdle} returns
+sound_výllager_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_výllager_no} returns
+sound_výllager_no:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_skeleton_death} returns
+sound_skeleton_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_donkey_death} returns
+sound_donkey_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_chýcken_ýdle} returns
+sound_chýcken_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_bark} returns
+sound_wolf_bark:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_gravel} returns
+sound_step_gravel:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderman_teleport} returns
+sound_enderman_teleport:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_death} returns
+sound_wolf_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_large_blast2} returns
+sound_fýrework_large_blast2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_slýme_walk} returns
+sound_slýme_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cow_hurt} returns
+sound_cow_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_explode} returns
+sound_explode:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_pýg_death} returns
+sound_zombýe_pýg_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_wood} returns
+sound_step_wood:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_chest_close} returns
+sound_chest_close:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sheep_ýdle} returns
+sound_sheep_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fall_small} returns
+sound_fall_small:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cat_purr} returns
+sound_cat_purr:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderdragon_death} returns
+sound_enderdragon_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderman_stare} returns
+sound_enderman_stare:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_jump} returns
+sound_horse_jump:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýrework_twýnkle2} returns
+sound_fýrework_twýnkle2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_pant} returns
+sound_wolf_pant:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_splash} returns
+sound_splash:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderdragon_hýt} returns
+sound_enderdragon_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderdragon_growl} returns
+sound_enderdragon_growl:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_eat} returns
+sound_eat:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sýlverfýsh_walk} returns
+sound_sýlverfýsh_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ghast_scream} returns
+sound_ghast_scream:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_shoot_arrow} returns
+sound_shoot_arrow:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_snow} returns
+sound_dýg_snow:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_gravel} returns
+sound_dýg_gravel:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sýlverfýsh_kýll} returns
+sound_sýlverfýsh_kýll:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_slýme_walk2} returns
+sound_slýme_walk2:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_breathe} returns
+sound_horse_breathe:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ghast_charge} returns
+sound_ghast_charge:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_dýg_wool} returns
+sound_dýg_wool:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_blaze_breath} returns
+sound_blaze_breath:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wýther_ýdle} returns
+sound_wýther_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_fýre} returns
+sound_fýre:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_anvýl_use} returns
+sound_anvýl_use:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_angry} returns
+sound_horse_angry:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_lava_pop} returns
+sound_lava_pop:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_magmacube_jump} returns
+sound_magmacube_jump:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_death} returns
+sound_horse_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_ýnfect} returns
+sound_zombýe_ýnfect:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_výllager_hýt} returns
+sound_výllager_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_whýne} returns
+sound_wolf_whýne:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_portal} returns
+sound_portal:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_skeleton_hurt} returns
+sound_skeleton_hurt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_pýg_ýdle} returns
+sound_zombýe_pýg_ýdle:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_ambýence_cave} returns
+sound_ambýence_cave:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_step_snow} returns
+sound_step_snow:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_výllager_yes} returns
+sound_výllager_yes:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_walk} returns
+sound_wolf_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_chýcken_egg_pop} returns
+sound_chýcken_egg_pop:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_cat_purreow} returns
+sound_cat_purreow:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_magmacube_walk} returns
+sound_magmacube_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_spýder_death} returns
+sound_spýder_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_successful_hýt} returns
+sound_successful_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wolf_shake} returns
+sound_wolf_shake:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_horse_armor} returns
+sound_horse_armor:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_chest_open} returns
+sound_chest_open:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_sheep_walk} returns
+sound_sheep_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wýther_spawn} returns
+sound_wýther_spawn:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_clýck} returns
+sound_clýck:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_skeleton_walk} returns
+sound_skeleton_walk:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_zombýe_death} returns
+sound_zombýe_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_enderman_hýt} returns
+sound_enderman_hýt:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_wýther_death} returns
+sound_wýther_death:
+  # Default return value
+  default: ''
+
+
+# Placeholder settings {sound_bat_takeoff} returns
+sound_bat_takeoff:
+  # Default return value
+  default: ''
+
+

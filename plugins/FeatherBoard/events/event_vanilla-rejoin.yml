@@ -1,0 +1,22 @@
+#----------------------------------------
+# Vanilla player rejoin
+# Player rejoining
+# 
+#----------------------------------------
+
+# DO NOT EDIT THIS CONFIG VERSION!
+config: 1
+
+
+# Do you want to enable this event hook?
+# Enabling this hook will trigger scoreboard
+# when the player rejoins the server
+# for the player that rejoined
+enabled: false
+
+# scoreboard to trigger
+scoreboard: 'default'
+
+
+# The time to display the scoreboard on the screen (in millseconds)
+onscreen-time: 5000

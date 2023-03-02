@@ -1,0 +1,32 @@
+## --------------------------------------- ##
+## Pinger placeholders Placeholders
+## About: This configuration allows you to
+##        configure what certain placeholders return.
+## --------------------------------------- ##
+
+# DO NOT EDIT THE CONFIG VERSION
+config: 3
+
+# Enable/Disable the placeholder group
+# Placeholder groups will not be loaded into the memory
+# when not used.
+enabled: true
+
+# Define what the boolean placeholder {isonline} returns
+isonline:
+  # This will be shown when the placeholder is 'True'
+  true: '&a&lONLINE'
+  # This will be shown when the placeholder is 'False'
+  false: '&c&lOFFLINE'
+
+
+# Define what the boolean placeholder {isonline_raw} returns
+isonline_raw:
+  # This will be shown when the placeholder is 'True'
+  true: 'true'
+  # This will be shown when the placeholder is 'False'
+  false: 'false'
+
+
+# Refresh interval of player count (in ticks)
+interval: 100

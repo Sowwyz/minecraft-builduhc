@@ -1,0 +1,16 @@
+# --------------------------- #
+# Custom Effects
+# --------------------------- #
+
+# DO NOT CHANGE THIS VERSION
+config: 1
+
+effects:
+  warning: # <warning messagecolor="c">Message here</warning>
+    # Optional arguments
+    arguments:
+      messagecolor: 'c' # Use 'c' as the default value for messagecolor
+    # Use {message} as the placeholder for the text that is between the tags
+    text:
+    - '&e&lWARNING: &{messagecolor}{message}'
+    - '&6&lWARNING: &{messagecolor}{message}'

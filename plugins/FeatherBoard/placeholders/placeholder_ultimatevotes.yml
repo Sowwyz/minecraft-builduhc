@@ -1,0 +1,10 @@
+## --------------------------------------- ##
+## UltimateVotes Placeholders
+## --------------------------------------- ##
+
+## Do not edit this config version
+config: 1
+
+hasvoted: # %ultimatedvotes_hasvoted%
+  true: 'Has voted' # Message when true (supports colors)
+  false: 'Has not voted' # Message when false (supports colors)

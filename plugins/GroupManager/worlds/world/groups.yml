@@ -1,0 +1,180 @@
+# Group inheritance
+#
+# Any inherited groups prefixed with a g: are global groups
+# and are inherited from the GlobalGroups.yml.
+#
+# Groups without the g: prefix are groups local to this world
+# and are defined in the this groups.yml file.
+#
+# Local group inheritances define your promotion tree when using 'manpromote/mandemote'
+
+groups:
+  Oyuncu:
+    default: true
+    permissions:
+    - essentials.list
+    - essentials.spawn
+    - essentials.warp
+    - essentials.warp.[warpname]
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.rules
+    - PingPlayer.use
+    - playerfixcommand.fixothers
+    inheritance: []
+    info:
+      prefix: '&7'
+      build: false
+      suffix: ''
+  Mod:
+    default: false
+    permissions:
+    - ban.ban
+    - ban.kick
+    - ban.mute
+    - ban.tempban
+    - essentials.chat.color
+    - essentials.fly
+    - essentials.gamemode
+    - essentials.gm
+    - essentials.list
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.mute
+    - essentials.rules
+    - essentials.tp
+    - PingPlayer.use
+    - RandomDisguise.Disguise
+    - playerfixcommand.fixothers
+    inheritance:
+    - platinumdonor
+    info:
+      prefix: '&c&lMOD &f&l»'
+      build: false
+      suffix: ''
+  iron:
+    default: false
+    permissions:
+    - cc.renk
+    - essentials.joinfullserver
+    - essentials.list
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.rules
+    - playerfixcommand.fixothers
+    inheritance: []
+    info:
+      prefix: '&8IRON &f&l»'
+      build: false
+      suffix: ''
+  diamond:
+    default: false
+    permissions:
+    - cc.renk
+    - essentials.fly
+    - essentials.afk
+    - essentials.afk.auto
+    - essentials.chat.color
+    - essentials.joinfullserver
+    - essentials.list
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.rules
+    - RandomDisguise.Disguise
+    - playerfixcommand.fixothers
+    inheritance: []
+    info:
+      prefix: '&b&lDIAMOND&3&lVIP &f&l»'
+      build: false
+      suffix: ''
+  platinum:
+    default: false
+    permissions:
+    - cc.renk
+    - essentials.fly
+    - essentials.chat.color
+    - essentials.joinfullserver
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.rules
+    - RandomDisguise.Disguise
+    - playerfixcommand.fixothers
+    inheritance: []
+    info:
+      prefix: '&7&lPLATINUM &f&l»'
+      build: false
+      suffix: ''
+  Kurucu:
+    default: false
+    permissions:
+    - '*'
+    inheritance: []
+    info:
+      prefix: '&c&lKURUCU &f&l»'
+      build: false
+      suffix: ''
+  gold:
+    default: false
+    permissions:
+    - cc.renk
+    - essentials.joinfullserver
+    - essentials.list
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.rules
+    - playerfixcommand.fixothers
+    inheritance: []
+    info:
+      prefix: '&6&lGOLD&e&lVIP &f&l»'
+      build: false
+      suffix: ''
+  Admin:
+    default: false
+    permissions:
+    - admin.gmute
+    - admin.tcc
+    - ban.ban
+    - ban.banlist
+    - ban.ipban
+    - ban.mute
+    - ban.tempban
+    - essentials.afk
+    - essentials.afk.auto
+    - essentials.fly
+    - essentials.gamemode
+    - essentials.gm
+    - essentials.list
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.mute
+    - essentials.rules
+    - essentials.spawn
+    - essentials.tp
+    - nick.name.*
+    - RandomDisguise.Disguise
+    - RandomDisguise.DisguiseCheck
+    - playerfixcommand.fixothers
+    - cc.renk
+    inheritance: []
+    info:
+      prefix: '&c&lADMIN &f&l»'
+      build: false
+      suffix: ''
+  youtuber:
+    default: false
+    permissions:
+    - essentials.chat.color
+    - essentials.fly
+    - essentials.joinfullserver
+    - essentials.list
+    - essentials.msg
+    - essentials.msg.color
+    - essentials.rules
+    - RandomDisguise.Disguise
+    - cc.renk
+    - playerfixcommand.fixothers
+    inheritance: []
+    info:
+      prefix: '&4&lYOU&f&lTUBER &f&l»'
+      build: false
+      suffix: ''

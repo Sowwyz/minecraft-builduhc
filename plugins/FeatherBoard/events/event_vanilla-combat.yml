@@ -1,0 +1,25 @@
+#----------------------------------------
+# Vanilla Combat hook
+# Player Combat hook in minecraft
+# 
+#----------------------------------------
+
+# DO NOT EDIT THIS CONFIG VERSION!
+config: 1
+
+
+# Do you want to enable this event hook?
+# Enabling this hook will trigger scoreboard
+# when the player is in combat
+# for the players that are in combat
+enabled: false
+
+# scoreboard to trigger
+scoreboard: 'default'
+
+
+# The time to display the scoreboard on the screen (in millseconds) after the last combat hit was made
+onscreen-time: 5000
+
+# Do you only want to trigger it on PVP (no mob attacks)
+only-pvp: false
